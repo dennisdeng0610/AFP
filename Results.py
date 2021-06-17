@@ -94,6 +94,9 @@ patent_data_annual_m['I_mktCap'] = np.log(patent_data_annual_m['I'] * patent_dat
 patent_data_annual_m['U_mktCap'] = np.log(patent_data_annual_m['U'] * patent_data_annual_m['avg_mkt_cap'])
 patent_data_annual_m['D_mktCap'] = np.log(patent_data_annual_m['D'] * patent_data_annual_m['avg_mkt_cap'])
 
+# Write the pickle file for the regression variables
+#patent_data_annual_m.to_pickle('Panel_Regression.pkl')
+
 ret_panel_1 = PanelOLS.from_formula(formula = 'ret ~ 1 + I + U + D + I_mktCap + U_mktCap + D_mktCap + TimeEffects',
                                     data=patent_data_annual_m).fit(cov_type = 'clustered', cluster_entity=True, cluster_time=True)
 ret_panel_2 = PanelOLS.from_formula(formula = 'ret_2 ~ 1 + I + U + D + I_mktCap + U_mktCap + D_mktCap + TimeEffects',
@@ -106,8 +109,6 @@ ret_panel_7 = PanelOLS.from_formula(formula = 'ret_7 ~ 1 + I + U + D + I_mktCap 
                                     data=patent_data_annual_m).fit(cov_type = 'clustered', cluster_entity=True, cluster_time=True)
 ret_panel_10 = PanelOLS.from_formula(formula = 'ret_10 ~ 1 + I + U + D + I_mktCap + U_mktCap + D_mktCap + TimeEffects',
                                     data=patent_data_annual_m).fit(cov_type = 'clustered', cluster_entity=True, cluster_time=True)
-
-#patent_data_annual_m.to_pickle('Panel_Regression.pkl')
 '''
 for i in range(1, 16, 1):
     patent_data_annual['Year'] = patent_data_annual['year'] + i
