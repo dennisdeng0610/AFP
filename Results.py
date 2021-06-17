@@ -108,7 +108,7 @@ ret_panel_10 = PanelOLS.from_formula(formula = 'ret_10 ~ 1 + I + U + D + I_mktCa
                                     data=patent_data_annual_m).fit(cov_type = 'clustered', cluster_entity=True, cluster_time=True)
 
 #patent_data_annual_m.to_pickle('Panel_Regression.pkl')
-
+'''
 for i in range(1, 16, 1):
     patent_data_annual['Year'] = patent_data_annual['year'] + i
     
@@ -123,5 +123,5 @@ for i in range(1, 16, 1):
                                           cluster_entity=True, cluster_time=True)
     print(i)
     print(ret_panel)
-    
+  '''  
 
